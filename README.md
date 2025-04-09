@@ -101,6 +101,5 @@ public class FirstActivity extends AppCompatActivity {
 
 ## 结果截图展示
 
-![image-20250409143025736](/Users/justin/Library/Application Support/typora-user-images/image-20250409143025736.png)
 
-![image-20250409143209911](/Users/justin/Library/Application Support/typora-user-images/image-20250409143209911.png)
+
