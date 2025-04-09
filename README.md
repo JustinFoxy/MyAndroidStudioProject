@@ -1,0 +1,102 @@
+# AndroidStudio 大作业
+
+## 设计需求
+
+1. 作业内容：自选主题，独立完成应用开发，尽可能多、全面地展示本学期的学习内容，**必须可以完整运行**
+2. 提交时间：第15周附近（六月上旬，时间未定）
+3. 提交内容：实验报告 + 工程文件打包 + 录屏（可选，强烈推荐）
+
+ *实验报告中包含：截图介绍所有实现的功能、非自己编写或从课程样例中获得的代码（包括代码来源）、课程中未涉及到的知识点*
+
+4. 提交方式：标题为 姓名+学号， 发送至邮箱 [mad_sjqu@126.com](mailto:mad_sjqu@126.com)
+5. 检查方式：视情况安排一对一腾讯会议进行答辩，或者QQ上询问
+6. 分数计算：替代期末的上机考试，占总成绩40%
+
+
+
+## 前端部分
+
+##### res/layout/first_layout.xml
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!--    创建按钮btn1-->
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_1" />
+
+</LinearLayout>
+```
+
+`android:id="@+id/btn1"`：为按钮设定一个唯一的标识符 btn1，借助这个 ID可以在 Java 代码里能够获取该按钮实例，进而对其进行操作。
+`android:layout_width="match_parent"`：此属性规定按钮的宽度会和父容器的宽度保持一致。
+`android:layout_height="wrap_content"`：该属性表明按钮的高度会依据其内容（也就是按钮上显示的文本）自动调整。
+`android:text="@string/button_1"`：这里是引用了字符串资源 button_1，其作用是把这个字符串显示在按钮上。
+
+##### res/values/strings.xml
+
+```xml
+<resources>
+    <string name="app_name">Activity</string>
+    <string name="button_1">Button 1</string>
+    <string name="label学号姓名">2411644邱志成</string>
+</resources>
+```
+
+## 后端部分
+
+##### java/com./FirstActivity.java
+
+```java
+package com.example.activity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class FirstActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        //  setContentView 是 Activity 类中的一个重要方法 ，它的作用是为当前 Activity 设置要显示的用户界面布局。
+        //  R 是一个自动生成的资源类，它包含了项目中所有资源（如布局、字符串、图片等）的标识符。
+        //  layout 是资源目录名，用于存放布局文件。
+        //  first_layout 是具体的布局文件名，这个布局文件定义了界面的视图结构和外观。
+        setContentView(R.layout.first_layout);
+
+        //  button1按钮点击后使用toast弹出消息
+        //  通过 findViewById 方法找到布局中 id 为 btn1 的按钮，并将其强制转换为 Button 类型
+        Button button1 = findViewById(R.id.btn1);
+
+        // 为按钮设置点击事件监听器
+        button1.setOnClickListener(new View.OnClickListener() {
+            // 重写 onClick 方法，当按钮被点击时会调用此方法
+            @Override
+            public void onClick(View v) {
+                //  使用 Toast 类创建一个短暂显示的消息提示，Toast.LENGTH_SHORT 的显示时长约为 2 秒。
+                Toast.makeText(FirstActivity.this, "你点击了按钮", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+      
+    }
+}
+```
+
+
+
+
+
+## 结果截图展示
