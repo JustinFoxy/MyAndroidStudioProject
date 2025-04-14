@@ -50,6 +50,23 @@
 </resources>
 ```
 
+
+
+在res中新建menu的资源库，并在资源库中新建main.xml
+
+##### **res/menu/main.xml**
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/add_item"
+        android:title="我是一个添加"/>
+    <item android:id="@+id/remove_item"
+        android:title="我是一个删除"/>
+</menu>
+```
+
 ## 后端部分
 
 ##### java/com./FirstActivity.java
@@ -57,7 +74,10 @@
 ```java
 package com.example.activity;
 
+import android.icu.text.CaseMap;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -90,7 +110,23 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-      
+        //
+    }
+
+    //	菜单栏部分
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.main,menu);
+        return true;
+    }
+  
+    // 菜单响应事件
+    public boolean onOptionsItemSelected(MenuItem item){
+        if (item.getItemId() == R.id.add_item) {
+            Toast.makeText(this,"你点击了添加",Toast.LENGTH_SHORT).show();
+        } else if (item.getItemId() == R.id.remove_item) {
+            Toast.makeText(this,"你点击了删除",Toast.LENGTH_SHORT).show();
+        }
+        return true;
     }
 }
 ```
