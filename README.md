@@ -137,5 +137,9 @@ public class FirstActivity extends AppCompatActivity {
 
 ## 结果截图展示
 ![Image](https://github.com/user-attachments/assets/179326e8-3545-4f74-83e6-9ca6d10a4426)
+![Image](https://github.com/user-attachments/assets/439ef728-bf48-46b4-9edf-b744a992e783)
+![Image](https://github.com/user-attachments/assets/31b612d5-e7fe-4609-b336-3df6747c6830)
+![Image](https://github.com/user-attachments/assets/611b162a-ce9e-4c97-ac0c-fe1a1024c790)
+![Image](https://github.com/user-attachments/assets/51020269-bcba-4b85-955c-b2e23ed58076)
 
 
