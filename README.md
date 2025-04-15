@@ -35,9 +35,12 @@
 </LinearLayout>
 ```
 
-`android:id="@+id/btn1"`：为按钮设定一个唯一的标识符 btn1，借助这个 ID可以在 Java 代码里能够获取该按钮实例，进而对其进行操作。
-`android:layout_width="match_parent"`：此属性规定按钮的宽度会和父容器的宽度保持一致。
+`android:id="@+id/btn1"`：为按钮设定一个唯一的标识符 btn1，借助这个 ID可以在 Java 代码里能够获取该按钮实例，进而对其进行操作。 
+
+`android:layout_width="match_parent"`：此属性规定按钮的宽度会和父容器的宽度保持一致。 
+
 `android:layout_height="wrap_content"`：该属性表明按钮的高度会依据其内容（也就是按钮上显示的文本）自动调整。
+
 `android:text="@string/button_1"`：这里是引用了字符串资源 button_1，其作用是把这个字符串显示在按钮上。
 
 ##### res/values/strings.xml
@@ -131,7 +134,37 @@ public class FirstActivity extends AppCompatActivity {
 }
 ```
 
+## Manifest文件配置
 
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.activity">
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Activity">
+
+
+        <!--    给页面中添加label-->
+        <activity android:name=".FirstActivity"
+            android:exported="true"
+            android:label="@string/label学号姓名">
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+        </activity>
+      
+    </application>
+</manifest>
+```
 
 
 
