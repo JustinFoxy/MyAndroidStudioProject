@@ -1,5 +1,6 @@
 package com.example.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,6 +33,10 @@ public class FirstActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //  使用 Toast 类创建一个短暂显示的消息提示，Toast.LENGTH_SHORT 的显示时长约为 2 秒。
                 Toast.makeText(FirstActivity.this, "你点击了按钮", Toast.LENGTH_SHORT).show();
+
+                //使用显式Intent实现跳转
+                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -39,16 +44,17 @@ public class FirstActivity extends AppCompatActivity {
     }
 
     //	菜单栏部分
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.main,menu);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+
     // 菜单响应事件
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.add_item) {
-            Toast.makeText(this,"你点击了添加",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "你点击了添加", Toast.LENGTH_SHORT).show();
         } else if (item.getItemId() == R.id.remove_item) {
-            Toast.makeText(this,"你点击了删除",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "你点击了删除", Toast.LENGTH_SHORT).show();
         }
         return true;
     }

@@ -14,7 +14,11 @@
 
 
 
+
+
 ## 前端部分
+
+### 第一个页面
 
 ##### res/layout/first_layout.xml
 
@@ -35,6 +39,8 @@
 </LinearLayout>
 ```
 
+**代码解析：**
+
 `android:id="@+id/btn1"`：为按钮设定一个唯一的标识符 btn1，借助这个 ID可以在 Java 代码里能够获取该按钮实例，进而对其进行操作。 
 
 `android:layout_width="match_parent"`：此属性规定按钮的宽度会和父容器的宽度保持一致。 
@@ -43,6 +49,8 @@
 
 `android:text="@string/button_1"`：这里是引用了字符串资源 button_1，其作用是把这个字符串显示在按钮上。
 
+
+
 ##### res/values/strings.xml
 
 ```xml
@@ -50,14 +58,13 @@
     <string name="app_name">Activity</string>
     <string name="button_1">Button 1</string>
     <string name="label学号姓名">2411644邱志成</string>
+    <string name="button_2">Button 2</string>
 </resources>
 ```
 
+**在res中新建menu的资源库，并在资源库中新建main.xml**
 
-
-在res中新建menu的资源库，并在资源库中新建main.xml
-
-##### **res/menu/main.xml**
+##### res/menu/main.xml
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -70,6 +77,30 @@
 </menu>
 ```
 
+### 第二个页面
+
+##### activity_second.xml
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondActivity">
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_2"/>
+
+</LinearLayout>
+```
+
+
+
 ## 后端部分
 
 ##### java/com./FirstActivity.java
@@ -77,7 +108,7 @@
 ```java
 package com.example.activity;
 
-import android.icu.text.CaseMap;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -110,29 +141,60 @@ public class FirstActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //  使用 Toast 类创建一个短暂显示的消息提示，Toast.LENGTH_SHORT 的显示时长约为 2 秒。
                 Toast.makeText(FirstActivity.this, "你点击了按钮", Toast.LENGTH_SHORT).show();
+
+                //使用显式Intent实现跳转
+                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+                startActivity(intent);
             }
         });
 
-        //
+        //	
     }
 
-    //	菜单栏部分
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.main,menu);
+    //	菜单栏menu部分
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-  
+
     // 菜单响应事件
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.add_item) {
-            Toast.makeText(this,"你点击了添加",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "你点击了添加", Toast.LENGTH_SHORT).show();
         } else if (item.getItemId() == R.id.remove_item) {
-            Toast.makeText(this,"你点击了删除",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "你点击了删除", Toast.LENGTH_SHORT).show();
         }
         return true;
     }
 }
 ```
+
+##### SecondActivity.java
+
+```java
+package com.example.activity;
+
+import android.os.Bundle;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class SecondActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+    }
+}
+```
+
+
+
+
 
 ## Manifest文件配置
 
@@ -148,21 +210,27 @@ public class FirstActivity extends AppCompatActivity {
         android:supportsRtl="true"
         android:theme="@style/Theme.Activity">
 
-
-        <!--    给页面中添加label-->
-        <activity android:name=".FirstActivity"
+        <!-- 给页面中添加label -->
+        <activity
+            android:name=".FirstActivity"
             android:exported="true"
             android:label="@string/label学号姓名">
 
-
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
         </activity>
-      
+
+        <activity
+            android:name=".SecondActivity"
+            android:exported="false"
+            android:label="第二个页面">
+        </activity>
+
     </application>
+
 </manifest>
 ```
 
@@ -175,4 +243,6 @@ public class FirstActivity extends AppCompatActivity {
 ![Image](https://github.com/user-attachments/assets/31b612d5-e7fe-4609-b336-3df6747c6830)
 ![Image](https://github.com/user-attachments/assets/611b162a-ce9e-4c97-ac0c-fe1a1024c790)
 ![Image](https://github.com/user-attachments/assets/51020269-bcba-4b85-955c-b2e23ed58076)
+
+![Image](https://github.com/user-attachments/assets/ee7979bc-fdb0-4527-a40b-673f15c91aa2)
 

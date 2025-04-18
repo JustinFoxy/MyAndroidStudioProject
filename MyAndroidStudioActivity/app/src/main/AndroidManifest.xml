@@ -9,19 +9,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Activity">
 
-
-        <!--    给页面中添加label-->
-        <activity android:name=".FirstActivity"
+        <!-- 给页面中添加label -->
+        <activity
+            android:name=".FirstActivity"
             android:exported="true"
             android:label="@string/label学号姓名">
 
-
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
         </activity>
 
+        <activity
+            android:name=".SecondActivity"
+            android:exported="false"
+            android:label="第二个页面">
+        </activity>
+
     </application>
+
 </manifest>
