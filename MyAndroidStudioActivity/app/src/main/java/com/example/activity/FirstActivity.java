@@ -1,6 +1,7 @@
 package com.example.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,21 +23,71 @@ public class FirstActivity extends AppCompatActivity {
         //  first_layout 是具体的布局文件名，这个布局文件定义了界面的视图结构和外观。
         setContentView(R.layout.first_layout);
 
-        //  button1按钮点击后使用toast弹出消息
-        //  通过 findViewById 方法找到布局中 id 为 btn1 的按钮，并将其强制转换为 Button 类型
-        Button button1 = findViewById(R.id.btn1);
+        //  1️⃣button按钮点击后使用toast弹出消息
+        //  通过 findViewById 方法找到布局中 id 为 first_layout_button_n 的按钮，并将其强制转换为 Button 类型
+        Button button1 = findViewById(R.id.first_layout_button_1);
+        Button button2 = findViewById(R.id.first_layout_button_2);
+        Button button3 = findViewById(R.id.first_layout_button_3);
+        Button button4 = findViewById(R.id.first_layout_button_4);
 
-        // 为按钮设置点击事件监听器
+        // 2️⃣为按钮设置点击事件监听器
+        //按钮1
         button1.setOnClickListener(new View.OnClickListener() {
             // 重写 onClick 方法，当按钮被点击时会调用此方法
             @Override
             public void onClick(View v) {
                 //  使用 Toast 类创建一个短暂显示的消息提示，Toast.LENGTH_SHORT 的显示时长约为 2 秒。
-                Toast.makeText(FirstActivity.this, "你点击了按钮", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FirstActivity.this, "你使用显式Intent跳转到了页面2", Toast.LENGTH_SHORT).show();
 
+                //  跳转（二选一）显式Intent和隐式Intent
                 //使用显式Intent实现跳转
                 Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        //按钮2
+        button2.setOnClickListener(new View.OnClickListener() {
+            // 重写 onClick 方法，当按钮被点击时会调用此方法
+            @Override
+            public void onClick(View v) {
+                //  使用 Toast 类创建一个短暂显示的消息提示，Toast.LENGTH_SHORT 的显示时长约为 2 秒。
+                Toast.makeText(FirstActivity.this, "你使用隐式Intent跳转到了页面2", Toast.LENGTH_SHORT).show();
+
+                //使用隐式Intent实现跳转
+                Intent intent1 = new Intent("com.example.activity.ACTION_START");
+                intent1.addCategory("com.example.activity.My_Category");
+                startActivity(intent1);
+            }
+        });
+
+        //按钮3
+        button3.setOnClickListener(new View.OnClickListener() {
+            // 重写 onClick 方法，当按钮被点击时会调用此方法
+            @Override
+            public void onClick(View v) {
+                //  使用 Toast 类创建一个短暂显示的消息提示，Toast.LENGTH_SHORT 的显示时长约为 2 秒。
+                Toast.makeText(FirstActivity.this, "你打开了百度", Toast.LENGTH_SHORT).show();
+
+                //使用Intent实现打开百度
+                Intent intent2 = new Intent(Intent.ACTION_VIEW);
+                intent2.setData(Uri.parse("https://www.baidu.com"));
+                startActivity(intent2);
+            }
+        });
+
+        //按钮4
+        button4.setOnClickListener(new View.OnClickListener() {
+            // 重写 onClick 方法，当按钮被点击时会调用此方法
+            @Override
+            public void onClick(View v) {
+                //  使用 Toast 类创建一个短暂显示的消息提示，Toast.LENGTH_SHORT 的显示时长约为 2 秒。
+                Toast.makeText(FirstActivity.this, "你打开了打电话", Toast.LENGTH_SHORT).show();
+
+                //使用Intent实现打开电话
+                Intent intent2 = new Intent(Intent.ACTION_VIEW);
+                intent2.setData(Uri.parse("tel:18001830029"));
+                startActivity(intent2);
             }
         });
 

@@ -11,10 +11,25 @@
 <!--    android:layout_height="wrap_content"：该属性表明按钮的高度会依据其内容（也就是按钮上显示的文本）自动调整。-->
 <!--    android:text="@string/button_1"：这里是引用了字符串资源 button_1，其作用是把这个字符串显示在按钮上。-->
     <Button
-        android:id="@+id/btn1"
+        android:id="@+id/first_layout_button_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_1" />
+        android:text="@string/first_layout_button_1" />
+    <Button
+        android:id="@+id/first_layout_button_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/first_layout_button_2"/>
+    <Button
+        android:id="@+id/first_layout_button_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/first_layout_button_3"/>
+    <Button
+        android:id="@+id/first_layout_button_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/first_layout_button_4"/>
 
 
 
