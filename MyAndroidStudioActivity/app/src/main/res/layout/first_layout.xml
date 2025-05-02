@@ -1,36 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
-<!--    创建按钮btn1-->
-<!--    android:id="@+id/btn1"：这是为按钮设定一个唯一的标识符 btn1，借助这个 ID，在 Java 或者 Kotlin 代码里能够获取该按钮实例，进而对其进行操作。-->
-<!--    android:layout_width="match_parent"：此属性规定按钮的宽度会和父容器的宽度保持一致。-->
-<!--    android:layout_height="wrap_content"：该属性表明按钮的高度会依据其内容（也就是按钮上显示的文本）自动调整。-->
-<!--    android:text="@string/button_1"：这里是引用了字符串资源 button_1，其作用是把这个字符串显示在按钮上。-->
+    <!--    创建按钮btn1-->
+    <!--    android:id="@+id/btn1"：这是为按钮设定一个唯一的标识符 btn1，借助这个 ID，在 Java 或者 Kotlin 代码里能够获取该按钮实例，进而对其进行操作。-->
+    <!--    android:layout_width="match_parent"：此属性规定按钮的宽度会和父容器的宽度保持一致。-->
+    <!--    android:layout_height="wrap_content"：该属性表明按钮的高度会依据其内容（也就是按钮上显示的文本）自动调整。-->
+    <!--    android:text="@string/button_1"：这里是引用了字符串资源 button_1，其作用是把这个字符串显示在按钮上。-->
     <Button
         android:id="@+id/first_layout_button_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/first_layout_button_1" />
+
     <Button
         android:id="@+id/first_layout_button_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/first_layout_button_2"/>
+        android:text="@string/first_layout_button_2" />
+
     <Button
         android:id="@+id/first_layout_button_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/first_layout_button_3"/>
+        android:text="@string/first_layout_button_3"
+        android:textAllCaps="false" />
+
     <Button
         android:id="@+id/first_layout_button_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/first_layout_button_4"/>
+        android:text="@string/first_layout_button_4"
+        android:textAllCaps="false" />
+    <Button
+        android:id="@+id/first_layout_button_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/first_layout_button_5" />
 
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img1" />
 
 
 </LinearLayout>

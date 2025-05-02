@@ -4,6 +4,7 @@
     <string name="label学号姓名">2411644邱志成 第一个页面</string>
     <string name="button_2">Button 2</string>
     <string name="first_layout_button_2">跳转到第二个页面（隐式）</string>
-    <string name="first_layout_button_3">使用intent打开百度引擎</string>
-    <string name="first_layout_button_4">使用intent打电话</string>
+    <string name="first_layout_button_3">打开百度引擎（使用intent）</string>
+    <string name="first_layout_button_4">打电话（使用intent）</string>
+    <string name="first_layout_button_5">切换图片</string>
 </resources>
