@@ -23,32 +23,48 @@
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-
-<!--    创建按钮-->
     <Button
         android:id="@+id/first_layout_button_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/first_layout_button_1" />
+
     <Button
         android:id="@+id/first_layout_button_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/first_layout_button_2"/>
+        android:text="@string/first_layout_button_2" />
+
     <Button
         android:id="@+id/first_layout_button_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/first_layout_button_3"/>
+        android:text="@string/first_layout_button_3"
+        android:textAllCaps="false" />
+
     <Button
         android:id="@+id/first_layout_button_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/first_layout_button_4"/>
+        android:text="@string/first_layout_button_4"
+        android:textAllCaps="false" />
+    <Button
+        android:id="@+id/first_layout_button_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/first_layout_button_5" />
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img1" />
+
+
 </LinearLayout>
 ```
 
@@ -73,8 +89,9 @@
     <string name="label学号姓名">2411644邱志成 第一个页面</string>
     <string name="button_2">Button 2</string>
     <string name="first_layout_button_2">跳转到第二个页面（隐式）</string>
-    <string name="first_layout_button_3">使用intent打开百度引擎</string>
-    <string name="first_layout_button_4">使用intent打电话</string>
+    <string name="first_layout_button_3">打开百度引擎（使用intent）</string>
+    <string name="first_layout_button_4">打电话（使用intent）</string>
+    <string name="first_layout_button_5">切换图片</string>
 </resources>
 ```
 
@@ -133,23 +150,39 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FirstActivity extends AppCompatActivity {
+    private ImageView imageView;
+
+    private int imageIndex = 0; // imageIndex变量记录当前图片索引
+    private int[] images = {R.drawable.img1, R.drawable.img2, R.drawable.img3}; // 图片资源数组
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //  setContentView 是 Activity 类中的一个重要方法 ，它的作用是为当前 Activity 设置要显示的用户界面布局。
+        //  R 是一个自动生成的资源类，它包含了项目中所有资源（如布局、字符串、图片等）的标识符。
+        //  layout 是资源目录名，用于存放布局文件。
+        //  first_layout 是具体的布局文件名，这个布局文件定义了界面的视图结构和外观。
         setContentView(R.layout.first_layout);
 
-        //  1️⃣button按钮点击后使用toast弹出消息
-        //  通过 findViewById 方法找到布局中 id 为 first_layout_button_n 的按钮，并将其强制转换为 Button 类型
+
+        //  通过布局文件中的 ID 找到对应的 ImageView 控件，并赋值给变量 imageView，以便后续操作它
+        imageView = (ImageView) findViewById(R.id.image_view);
+
+
+        //按钮部分
+        // 1️⃣通过 findViewById 方法找到布局中 id 为 first_layout_button_n 的按钮，并将其强制转换为 Button 类型
         Button button1 = findViewById(R.id.first_layout_button_1);
         Button button2 = findViewById(R.id.first_layout_button_2);
         Button button3 = findViewById(R.id.first_layout_button_3);
         Button button4 = findViewById(R.id.first_layout_button_4);
+        Button button5 = findViewById(R.id.first_layout_button_5);
 
         // 2️⃣为按钮设置点击事件监听器
         //按钮1
@@ -212,7 +245,17 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        //
+        //按钮5
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageIndex = (imageIndex + 1) % images.length; // 每次点击后索引 +1，超出就回到 0
+                imageView.setImageResource(images[imageIndex]); // 设置当前图片
+                Toast.makeText(FirstActivity.this, "你切换到了第" + (imageIndex + 1) + "张图片", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
     //	菜单栏部分
@@ -230,6 +273,7 @@ public class FirstActivity extends AppCompatActivity {
         }
         return true;
     }
+
 }
 ```
 
@@ -303,7 +347,6 @@ public class SecondActivity extends AppCompatActivity {
 
 
 ## 结果截图展示
-
 
 
 
