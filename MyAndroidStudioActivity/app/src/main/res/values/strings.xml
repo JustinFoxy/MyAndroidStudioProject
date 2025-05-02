@@ -2,9 +2,9 @@
     <string name="app_name">Activity</string>
     <string name="first_layout_button_1">跳转到第二个页面（显式）</string>
     <string name="label学号姓名">2411644邱志成 第一个页面</string>
-    <string name="button_2">Button 2</string>
     <string name="first_layout_button_2">跳转到第二个页面（隐式）</string>
     <string name="first_layout_button_3">打开百度引擎（使用intent）</string>
-    <string name="first_layout_button_4">打电话（使用intent）</string>
+    <string name="first_layout_button_4">打电话给自己（使用intent）</string>
     <string name="first_layout_button_5">切换图片</string>
+    <string name="second_layout_button_1">回道页面1（显式）</string>
 </resources>

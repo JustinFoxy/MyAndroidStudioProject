@@ -7,9 +7,9 @@
     tools:context=".SecondActivity">
 
     <Button
-        android:id="@+id/btn2"
+        android:id="@+id/second_layout_button_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_2"/>
+        android:text="@string/second_layout_button_1"/>
 
 </LinearLayout>
