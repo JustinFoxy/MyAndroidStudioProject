@@ -80,7 +80,7 @@ public class SecondActivity extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //显示跳转2 to 3
+                //显示跳转页面2 to 页面3
                 //  使用 Toast 类创建一个短暂显示的消息提示，Toast.LENGTH_SHORT 的显示时长约为 2 秒。
                 Toast.makeText(SecondActivity.this, "你使用显式Intent跳转到了页面3", Toast.LENGTH_SHORT).show();
                 //  跳转（二选一）显式Intent和隐式Intent
