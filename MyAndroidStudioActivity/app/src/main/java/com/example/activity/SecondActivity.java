@@ -13,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SecondActivity extends AppCompatActivity {
 
+    //初始化数据库
+    private MyDatabaseHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +25,8 @@ public class SecondActivity extends AppCompatActivity {
         Button button1 = findViewById(R.id.second_layout_button_1);
         Button button2 = findViewById(R.id.show_input_button);
         Button button3 = findViewById(R.id.dialog_button);
+        Button button4 = findViewById(R.id.second_layout_button_2);
+        Button button5 = findViewById(R.id.create_database);
         //文本框初始化
         EditText editText = findViewById(R.id.edit_text);
 
@@ -71,7 +76,28 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
+        //按钮4
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //显示跳转2 to 3
+                //  使用 Toast 类创建一个短暂显示的消息提示，Toast.LENGTH_SHORT 的显示时长约为 2 秒。
+                Toast.makeText(SecondActivity.this, "你使用显式Intent跳转到了页面3", Toast.LENGTH_SHORT).show();
+                //  跳转（二选一）显式Intent和隐式Intent
+                //使用显式Intent实现跳转
+                Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
+                startActivity(intent);
+            }
+        });
 
+        //按钮5
+        dbHelper = new MyDatabaseHelper(this, "BookStore.dp", null, 1);
+        Button createDatabase = (Button) findViewById(R.id.create_database);
+        createDatabase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dbHelper.getWritableDatabase();
+            }
+        });
     }
-
 }

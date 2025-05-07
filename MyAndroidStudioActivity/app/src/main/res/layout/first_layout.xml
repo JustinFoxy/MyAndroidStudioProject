@@ -2,7 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".FirstActivity">
+<!--LinearLayout线性布局,约束布局ConstraintLayout-->
+<!--垂直排列vertical,horizontal水平排列    -->
+
 
 
     <!--    创建按钮btn1-->
@@ -21,6 +26,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/first_layout_button_2" />
+    <Button
+        android:id="@+id/first_layout_button_6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="跳转到第三个页面（隐式）"/>
 
     <Button
         android:id="@+id/first_layout_button_3"

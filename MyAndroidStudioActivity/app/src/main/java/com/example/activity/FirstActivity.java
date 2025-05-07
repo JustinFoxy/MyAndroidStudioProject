@@ -40,6 +40,7 @@ public class FirstActivity extends AppCompatActivity {
         Button button3 = findViewById(R.id.first_layout_button_3);
         Button button4 = findViewById(R.id.first_layout_button_4);
         Button button5 = findViewById(R.id.first_layout_button_5);
+        Button button6 = findViewById(R.id.first_layout_button_6);
 
         // 2️⃣为按钮设置点击事件监听器
         //按钮1
@@ -112,6 +113,18 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
+        //按钮6
+
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 使用隐式 Intent 跳转到 ThirdActivity
+                Toast.makeText(FirstActivity.this, "你使用隐式Intent跳转到了页面3", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent("com.example.activity.ACTION_START");
+                intent.addCategory("android.intent.category.DEFAULT");
+                startActivity(intent);
+            }
+        });
 
     }
 

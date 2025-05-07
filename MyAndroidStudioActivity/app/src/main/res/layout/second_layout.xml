@@ -11,6 +11,12 @@
         android:layout_height="wrap_content"
         android:text="@string/second_layout_button_1" />
 
+    <Button
+        android:id="@+id/second_layout_button_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/second_layout_button_2" />
+
     <EditText
         android:id="@+id/edit_text"
         android:layout_width="match_parent"
@@ -27,5 +33,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/dialog_button"/>
+    <Button
+        android:id="@+id/create_database"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/create_database" />
 
 </LinearLayout>

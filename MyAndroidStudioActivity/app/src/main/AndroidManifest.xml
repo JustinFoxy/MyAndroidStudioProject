@@ -33,6 +33,16 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ThirdActivity"
+            android:exported="true"
+            android:label="第三个页面">
+            <intent-filter>
+                <action android:name="com.example.activity.THIRD_ACTION"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
