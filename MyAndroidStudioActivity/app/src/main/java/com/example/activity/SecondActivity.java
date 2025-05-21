@@ -11,6 +11,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.File;
+
 public class SecondActivity extends AppCompatActivity {
 
     //初始化数据库
@@ -45,7 +47,6 @@ public class SecondActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
         //按钮2
         button2.setOnClickListener(new View.OnClickListener() {
@@ -90,13 +91,23 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
-        //按钮5
-        dbHelper = new MyDatabaseHelper(this, "BookStore.dp", null, 1);
-        Button createDatabase = (Button) findViewById(R.id.create_database);
-        createDatabase.setOnClickListener(new View.OnClickListener() {
+        //按钮5 数据库
+        //数据库名为BookStore，版本为1,可以通过升级版本来更新数据库
+        dbHelper = new MyDatabaseHelper(this, "BookStore.db", null, 2);
+        button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //按钮点击事件里调用getWritableDatabase()方法，当第一次点击会自动创建book表
                 dbHelper.getWritableDatabase();
+                Toast.makeText(SecondActivity.this, "已点击按钮，尝试创建数据库", Toast.LENGTH_SHORT).show();
+
+                // 检查数据库文件是否真的存在，用Toast弹窗显示调试状态
+                File dbFile = getDatabasePath("BookStore.db");
+                if (dbFile.exists()) {
+                    Toast.makeText(SecondActivity.this, "数据库已存在", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(SecondActivity.this, "数据库未成功创建", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

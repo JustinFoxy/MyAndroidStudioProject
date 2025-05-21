@@ -4,8 +4,17 @@
     <mappings />
     <preferences />
   </component>
+  <component name="DBNavigator.Project.DataEditorManager">
+    <record-view-column-sorting-type value="BY_INDEX" />
+    <value-preview-text-wrapping value="true" />
+    <value-preview-pinned value="false" />
+  </component>
   <component name="DBNavigator.Project.DatabaseAssistantManager">
-    <assistants />
+    <assistants>
+      <assistant-state connection-id="14bd0489-6b39-4d7e-b65e-38a95ceb4f00" default-profile-name="" selected-profile-name="" selected-model-name="" assistant-type="GENERIC" selected-action="SHOW_SQL" availability="UNAVAILABLE" acknowledgement="NONE">
+        <messages />
+      </assistant-state>
+    </assistants>
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
@@ -18,12 +27,31 @@
       <console name="Connection" type="STANDARD" schema="main" session="Main" />
     </connection>
   </component>
+  <component name="DBNavigator.Project.DatabaseEditorStateManager">
+    <last-used-providers />
+  </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
+  </component>
+  <component name="DBNavigator.Project.DatabaseSessionManager">
+    <connection id="14bd0489-6b39-4d7e-b65e-38a95ceb4f00" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="14bd0489-6b39-4d7e-b65e-38a95ceb4f00" dataset="main.Book" active-filter-id="c1ba10f1-e190-4809-be5b-e2e2cb4532e0">
+      <filter id="c1ba10f1-e190-4809-be5b-e2e2cb4532e0" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="id" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
+  </component>
+  <component name="DBNavigator.Project.ExecutionManager">
+    <retain-sticky-names value="false" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
     <filters />
+  </component>
+  <component name="DBNavigator.Project.ParserDiagnosticsManager">
+    <diagnostics-history />
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
@@ -44,7 +72,7 @@
           <tns-folder value="" />
           <tns-profile value="" />
           <files>
-            <file path="$USER_HOME$/Desktop/BookStore.dp" schema="main" />
+            <file path="$USER_HOME$/Database/BookStore.db" schema="main" />
           </files>
           <type value="NONE" />
           <user value="" />
