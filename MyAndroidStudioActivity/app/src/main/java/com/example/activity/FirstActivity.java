@@ -1,5 +1,6 @@
 package com.example.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,9 +8,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FirstActivity extends AppCompatActivity {
@@ -41,6 +44,11 @@ public class FirstActivity extends AppCompatActivity {
         Button button4 = findViewById(R.id.first_layout_button_4);
         Button button5 = findViewById(R.id.first_layout_button_5);
         Button button6 = findViewById(R.id.first_layout_button_6);
+        Button button7 = findViewById(R.id.show_input_button);
+        Button button8 = findViewById(R.id.dialog_button);
+
+
+        EditText editText = findViewById(R.id.edit_text);
 
         // 2️⃣为按钮设置点击事件监听器
         //按钮1
@@ -109,7 +117,7 @@ public class FirstActivity extends AppCompatActivity {
             public void onClick(View v) {
                 imageIndex = (imageIndex + 1) % images.length; // 每次点击后索引 +1，超出就回到 0
                 imageView.setImageResource(images[imageIndex]); // 设置当前图片
-                Toast.makeText(FirstActivity.this, "你切换到了第" + (imageIndex + 1) + "张图片", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(FirstActivity.this, "你切换到了第" + (imageIndex + 1) + "张图片", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -123,6 +131,35 @@ public class FirstActivity extends AppCompatActivity {
                 Intent intent = new Intent("com.example.activity.ACTION_START");
                 intent.addCategory("android.intent.category.DEFAULT");
                 startActivity(intent);
+            }
+        });
+
+
+        //按钮7
+        button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //收取文本框的内容
+                String inputText = editText.getText().toString();
+                Toast.makeText(FirstActivity.this, "你输入了: " + inputText, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //按钮8
+        button8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //跳出弹窗
+                AlertDialog.Builder dialog = new AlertDialog.Builder(FirstActivity.this);
+                dialog.setTitle("有一个重要的信息");
+                dialog.setMessage("求求老师大作业给我过吧");
+                dialog.setCancelable(false);
+                dialog.setPositiveButton("让我过！", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                dialog.show();
             }
         });
 

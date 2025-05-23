@@ -45,6 +45,25 @@
         android:layout_height="wrap_content"
         android:text="@string/first_layout_button_4"
         android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/dialog_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_button"/>
+
+    <EditText
+        android:id="@+id/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_text" />
+    <Button
+        android:id="@+id/show_input_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/show_input_button"
+        android:textAllCaps="false" />
+
     <Button
         android:id="@+id/first_layout_button_5"
         android:layout_width="match_parent"

@@ -17,26 +17,59 @@
         android:layout_height="wrap_content"
         android:text="@string/second_layout_button_2" />
 
-    <EditText
-        android:id="@+id/edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/edit_text" />
-    <Button
-        android:id="@+id/show_input_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/show_input_button"
-        android:textAllCaps="false" />
-    <Button
-        android:id="@+id/dialog_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/dialog_button"/>
+
     <Button
         android:id="@+id/create_database"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/create_database" />
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="书名" />
+    <EditText
+        android:id="@+id/edit_author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="作者" />
+    <EditText
+        android:id="@+id/edit_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="价格"
+        android:inputType="numberDecimal" />
+    <EditText
+        android:id="@+id/edit_pages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="页数"
+        android:inputType="number" />
+
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="添加图书" />
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="更新图书价格" />
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="删除图书" />
+    <Button
+        android:id="@+id/btn_query_all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="查询所有图书" />
+    <ListView
+        android:id="@+id/book_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
 
 </LinearLayout>

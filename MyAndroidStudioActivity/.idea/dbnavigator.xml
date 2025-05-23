@@ -6,12 +6,15 @@
   </component>
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseAssistantManager">
     <assistants>
       <assistant-state connection-id="14bd0489-6b39-4d7e-b65e-38a95ceb4f00" default-profile-name="" selected-profile-name="" selected-model-name="" assistant-type="GENERIC" selected-action="SHOW_SQL" availability="UNAVAILABLE" acknowledgement="NONE">
+        <messages />
+      </assistant-state>
+      <assistant-state connection-id="e80d6bae-26a4-434e-83c6-5db8667558f3" default-profile-name="" selected-profile-name="" selected-model-name="" assistant-type="GENERIC" selected-action="SHOW_SQL" availability="UNAVAILABLE" acknowledgement="NONE">
         <messages />
       </assistant-state>
     </assistants>
@@ -23,7 +26,7 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="14bd0489-6b39-4d7e-b65e-38a95ceb4f00">
+    <connection id="e80d6bae-26a4-434e-83c6-5db8667558f3">
       <console name="Connection" type="STANDARD" schema="main" session="Main" />
     </connection>
   </component>
@@ -34,17 +37,21 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="14bd0489-6b39-4d7e-b65e-38a95ceb4f00" />
+    <connection id="e80d6bae-26a4-434e-83c6-5db8667558f3" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="14bd0489-6b39-4d7e-b65e-38a95ceb4f00" dataset="main.Book" active-filter-id="c1ba10f1-e190-4809-be5b-e2e2cb4532e0">
-      <filter id="c1ba10f1-e190-4809-be5b-e2e2cb4532e0" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND">
-        <condition column="id" operator="=" value="" active="true" />
-      </filter>
-    </filter-actions>
+    <filter-actions connection-id="e80d6bae-26a4-434e-83c6-5db8667558f3" dataset="main.Book" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
+  </component>
+  <component name="DBNavigator.Project.MethodExecutionManager">
+    <method-browser />
+    <execution-history>
+      <group-entries value="true" />
+      <execution-inputs />
+    </execution-history>
+    <execution-variables-cache />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
@@ -55,7 +62,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="14bd0489-6b39-4d7e-b65e-38a95ceb4f00" active="true" signed="true">
+      <connection id="e80d6bae-26a4-434e-83c6-5db8667558f3" active="true" signed="true">
         <database>
           <name value="Connection" />
           <description value="" />
