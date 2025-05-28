@@ -14,6 +14,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             + "pages integer,"
             + "name text)";
 
+    //创建bookstore的数据库，在库中新建一个数据表Category【有id（主键，自增长）、category_name文本类型，用来存储分类的名称、category_code整数类型，用来存储分类的编码
     public static final String CREATE_CATEGORY = "create table Category("
             + "id integer primary key autoincrement,"
             + "category_name text,"
@@ -28,7 +29,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         mContext = context;
     }
 
-    //两个方法自己需要重写
+    //两个方法onCreate、onUpgrade自己需要重写
     @Override
     public void onCreate(SQLiteDatabase db) {
         //调用SQLiteDatabase中的execSQL的方法执行建表语句，Toast弹窗来显示创建成功

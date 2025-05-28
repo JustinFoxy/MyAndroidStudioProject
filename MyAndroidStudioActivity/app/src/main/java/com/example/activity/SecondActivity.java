@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -45,6 +46,7 @@ public class SecondActivity extends AppCompatActivity {
             this.pages = pages;
         }
 
+        //重写Book的toString方法
         @Override
         public String toString() {
             return "《" + name + "》\n作者: " + author + "\n价格: ¥" + price + "，页数: " + pages;
@@ -54,6 +56,7 @@ public class SecondActivity extends AppCompatActivity {
     // 新的数据列表：与 bookList 一一对应
     private List<Book> bookDataList = new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +64,6 @@ public class SecondActivity extends AppCompatActivity {
 
         //按钮初始化
         Button button1 = findViewById(R.id.second_layout_button_1);
-
         Button button2 = findViewById(R.id.second_layout_button_2);
         Button button3 = findViewById(R.id.create_database);
 

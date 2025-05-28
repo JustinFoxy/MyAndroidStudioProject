@@ -51,7 +51,7 @@ public class FirstActivity extends AppCompatActivity {
         EditText editText = findViewById(R.id.edit_text);
 
         // 2️⃣为按钮设置点击事件监听器
-        //按钮1
+        //按钮1：显式Intent跳转到了页面2
         button1.setOnClickListener(new View.OnClickListener() {
             // 重写 onClick 方法，当按钮被点击时会调用此方法
             @Override
@@ -66,7 +66,7 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        //按钮2
+        //按钮2：使用隐式Intent跳转到了页面2
         button2.setOnClickListener(new View.OnClickListener() {
             // 重写 onClick 方法，当按钮被点击时会调用此方法
             @Override
@@ -81,7 +81,7 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        //按钮3
+        //按钮3：打开百度
         button3.setOnClickListener(new View.OnClickListener() {
             // 重写 onClick 方法，当按钮被点击时会调用此方法
             @Override
@@ -96,7 +96,7 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        //按钮4
+        //按钮4：打电话
         button4.setOnClickListener(new View.OnClickListener() {
             // 重写 onClick 方法，当按钮被点击时会调用此方法
             @Override
@@ -111,7 +111,7 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        //按钮5
+        //按钮5：切换图片
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,8 +121,7 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        //按钮6
-
+        //按钮6：隐式跳转到了页面3
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,7 +134,7 @@ public class FirstActivity extends AppCompatActivity {
         });
 
 
-        //按钮7
+        //按钮7：读取文本框
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,7 +144,7 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        //按钮8
+        //按钮8：弹窗
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
