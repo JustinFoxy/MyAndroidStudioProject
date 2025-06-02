@@ -18,40 +18,32 @@ import androidx.appcompat.app.AppCompatActivity;
 public class FirstActivity extends AppCompatActivity {
     private ImageView imageView;
 
-    private int imageIndex = 0; // imageIndex变量记录当前图片索引
-    private int[] images = {R.drawable.img1, R.drawable.img2, R.drawable.img3}; // 图片资源数组
+    private int imageIndex = 0; // imageIndex变量：记录当前图片索引
+    private int[] images = {R.drawable.img1, R.drawable.img2, R.drawable.img3}; //  images：图片资源数组
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //  setContentView 是 Activity 类中的一个重要方法 ，它的作用是为当前 Activity 设置要显示的用户界面布局。
-        //  R 是一个自动生成的资源类，它包含了项目中所有资源（如布局、字符串、图片等）的标识符。
-        //  layout 是资源目录名，用于存放布局文件。
-        //  first_layout 是具体的布局文件名，这个布局文件定义了界面的视图结构和外观。
-        setContentView(R.layout.first_layout);
+        setContentView(R.layout.first_layout);	// 设置当前界面使用的布局文件
 
 
-        //  通过布局文件中的 ID 找到对应的 ImageView 控件，并赋值给变量 imageView，以便后续操作它
-        imageView = (ImageView) findViewById(R.id.image_view);
+        // 初始化图片控件
+        imageView = findViewById(R.id.image_view);
 
+        // 初始化所有按钮和文本框控件
+        Button button1 = findViewById(R.id.first_layout_button_1); // 显式跳转页面二
+        Button button2 = findViewById(R.id.first_layout_button_2); // 隐式跳转页面二
+        Button button3 = findViewById(R.id.first_layout_button_3); // 打开百度网页
+        Button button4 = findViewById(R.id.first_layout_button_4); // 拨打电话
+        Button button5 = findViewById(R.id.first_layout_button_5); // 切换图片
+        Button button6 = findViewById(R.id.first_layout_button_6); // 隐式跳转页面三
+        Button button7 = findViewById(R.id.show_input_button);     // 显示输入框内容
+        Button button8 = findViewById(R.id.dialog_button);         // 弹出对话框
 
-        //按钮部分
-        // 1️⃣通过 findViewById 方法找到布局中 id 为 first_layout_button_n 的按钮，并将其强制转换为 Button 类型
-        Button button1 = findViewById(R.id.first_layout_button_1);
-        Button button2 = findViewById(R.id.first_layout_button_2);
-        Button button3 = findViewById(R.id.first_layout_button_3);
-        Button button4 = findViewById(R.id.first_layout_button_4);
-        Button button5 = findViewById(R.id.first_layout_button_5);
-        Button button6 = findViewById(R.id.first_layout_button_6);
-        Button button7 = findViewById(R.id.show_input_button);
-        Button button8 = findViewById(R.id.dialog_button);
+        EditText editText = findViewById(R.id.edit_text);          // 用户输入框
 
-
-        EditText editText = findViewById(R.id.edit_text);
-
-        // 2️⃣为按钮设置点击事件监听器
-        //按钮1：显式Intent跳转到了页面2
+        // 为按钮设置点击事件监听器
+        //按钮1：显式跳转到 SecondActivity
         button1.setOnClickListener(new View.OnClickListener() {
             // 重写 onClick 方法，当按钮被点击时会调用此方法
             @Override
@@ -59,14 +51,13 @@ public class FirstActivity extends AppCompatActivity {
                 //  使用 Toast 类创建一个短暂显示的消息提示，Toast.LENGTH_SHORT 的显示时长约为 2 秒。
                 Toast.makeText(FirstActivity.this, "你使用显式Intent跳转到了页面2", Toast.LENGTH_SHORT).show();
 
-                //  跳转（二选一）显式Intent和隐式Intent
                 //使用显式Intent实现跳转
                 Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
                 startActivity(intent);
             }
         });
 
-        //按钮2：使用隐式Intent跳转到了页面2
+        //按钮2：隐式跳转到 SecondActivity
         button2.setOnClickListener(new View.OnClickListener() {
             // 重写 onClick 方法，当按钮被点击时会调用此方法
             @Override
@@ -111,7 +102,7 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        //按钮5：切换图片
+        //按钮5：切换图片，每点击一次切换一张图
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,7 +112,7 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        //按钮6：隐式跳转到了页面3
+        //按钮6：隐式跳转到 ThirdActivity
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,7 +125,7 @@ public class FirstActivity extends AppCompatActivity {
         });
 
 
-        //按钮7：读取文本框
+        //按钮7：读取输入框内容并显示在 Toast 中
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,7 +135,7 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        //按钮8：弹窗
+        //按钮8：显示弹出对话框
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,6 +147,7 @@ public class FirstActivity extends AppCompatActivity {
                 dialog.setPositiveButton("让我过！", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        // 点击确认后什么也不做
                     }
                 });
                 dialog.show();
@@ -179,5 +171,4 @@ public class FirstActivity extends AppCompatActivity {
         }
         return true;
     }
-
 }

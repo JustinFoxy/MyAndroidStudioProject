@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/first_layout_button_3"
-        android:textAllCaps="false" />
+        android:textAllCaps="false" /> <!-- 不将文本全部转换为大写 -->
 
     <Button
         android:id="@+id/first_layout_button_4"

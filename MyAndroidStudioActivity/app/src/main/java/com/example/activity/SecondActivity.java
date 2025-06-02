@@ -25,14 +25,12 @@ import java.util.List;
 public class SecondActivity extends AppCompatActivity {
 
     //初始化数据库
-    private MyDatabaseHelper dbHelper;
-    private ArrayAdapter<String> adapter;
-    private List<String> bookList = new ArrayList<>();
-    private String originalBookName = null;
+    private MyDatabaseHelper dbHelper;// 数据库辅助类，用于数据库操作
+    private ArrayAdapter<String> adapter;// ListView 的适配器，用于展示简洁文本信息
+    private List<String> bookList = new ArrayList<>();// 字符串列表，用于展示图书内容摘要
+    private String originalBookName = null;// 记录当前选中的原始书名，用于更新操作时定位数据
 
-
-
-    // 辅助类：存储完整信息
+    // 定义一个图书类，用于封装图书完整信息
     static class Book {
         String name;
         String author;
@@ -53,7 +51,7 @@ public class SecondActivity extends AppCompatActivity {
         }
     }
 
-    // 新的数据列表：与 bookList 一一对应
+    // 储存完整图书信息的列表：与 bookList 一一对应
     private List<Book> bookDataList = new ArrayList<>();
 
 
@@ -77,7 +75,7 @@ public class SecondActivity extends AppCompatActivity {
         EditText priceEdit = findViewById(R.id.edit_price);
         EditText pagesEdit = findViewById(R.id.edit_pages);
 
-        //listview部分
+        //设置listview与适配器，并绑定点击事件用于选中图书进行更新
         ListView listView = findViewById(R.id.book_list_view);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, bookList);
         listView.setAdapter(adapter);
@@ -97,7 +95,7 @@ public class SecondActivity extends AppCompatActivity {
         });
 
 
-        //按钮1
+        //跳转回页面一
         button1.setOnClickListener(new View.OnClickListener() {
             // 重写 onClick 方法，当按钮被点击时会调用此方法
             @Override
@@ -112,21 +110,20 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
-        //按钮4
+        //跳转到页面三
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //显示跳转页面2 to 页面3
                 //  使用 Toast 类创建一个短暂显示的消息提示，Toast.LENGTH_SHORT 的显示时长约为 2 秒。
                 Toast.makeText(SecondActivity.this, "你使用显式Intent跳转到了页面3", Toast.LENGTH_SHORT).show();
-                //  跳转（二选一）显式Intent和隐式Intent
                 //使用显式Intent实现跳转
                 Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
                 startActivity(intent);
             }
         });
 
-        //按钮5 数据库
+        //数据库
         //数据库名为BookStore，版本为1,可以通过升级版本来更新数据库
         dbHelper = new MyDatabaseHelper(this, "BookStore.db", null, 4);
         button3.setOnClickListener(new View.OnClickListener() {
@@ -143,16 +140,10 @@ public class SecondActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(SecondActivity.this, "数据库未成功创建", Toast.LENGTH_SHORT).show();
                 }
-
-
             }
         });
 
-
-
-
-
-        // 添加
+        // 添加图书
         btnAdd.setOnClickListener(v -> {
             String name = nameEdit.getText().toString();
             String author = authorEdit.getText().toString();
@@ -178,7 +169,7 @@ public class SecondActivity extends AppCompatActivity {
             db.close();
         });
 
-        // 更新（通过书名修改价格）
+        // 修改图书信息（通过原书名定位）
         btnUpdate.setOnClickListener(v -> {
             String name = nameEdit.getText().toString();
             String author = authorEdit.getText().toString();
@@ -216,7 +207,7 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
-        // 删除
+        // 删除图书
         btnDelete.setOnClickListener(v -> {
             String name = nameEdit.getText().toString();
             if (name.isEmpty()) {
@@ -230,8 +221,7 @@ public class SecondActivity extends AppCompatActivity {
             db.close();
         });
 
-        // 查询
-
+        // 查询所有图书
         btnQueryAll.setOnClickListener(v -> {
             bookList.clear();        // 给 ListView 显示的文本
             bookDataList.clear();    // 实际存储完整信息
@@ -259,8 +249,5 @@ public class SecondActivity extends AppCompatActivity {
 
             adapter.notifyDataSetChanged();
         });
-
-
-
     }
 }

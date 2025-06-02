@@ -22,23 +22,27 @@
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 页面布局使用垂直方向排列的线性布局 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="match_parent"    <!-- 宽度填满整个屏幕 -->
+    android:layout_height="match_parent"   <!-- 高度填满整个屏幕 -->
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    tools:context=".FirstActivity">
+    android:orientation="vertical"         <!-- 子元素垂直排列 -->
+    tools:context=".FirstActivity">        <!-- 关联的 Activity 类 -->
 
+<!-- 第一个按钮：跳转到页面二（显示） -->
     <Button
         android:id="@+id/first_layout_button_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/first_layout_button_1" />
+<!-- 第二个按钮：跳转到页面二（隐式） -->
     <Button
         android:id="@+id/first_layout_button_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/first_layout_button_2" />
+
     <Button
         android:id="@+id/first_layout_button_6"
         android:layout_width="match_parent"
@@ -49,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/first_layout_button_3"
-        android:textAllCaps="false" />
+        android:textAllCaps="false" /> <!-- 不将文本全部转换为大写 -->
     <Button
         android:id="@+id/first_layout_button_4"
         android:layout_width="match_parent"
@@ -62,6 +66,7 @@
         android:layout_height="wrap_content"
         android:text="@string/dialog_button"/>
 
+<!-- 输入框：供用户输入文本 -->
     <EditText
         android:id="@+id/edit_text"
         android:layout_width="match_parent"
@@ -138,50 +143,66 @@
 </menu>
 ```
 
-### 第二个页面
+### 第二个页面：图书管理页面
 
 ##### second_layout.xml
 
 ```xml
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 垂直线性布局，用于图书信息录入与管理操作 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".SecondActivity">
+    android:layout_width="match_parent"        <!-- 宽度填满屏幕 -->
+    android:layout_height="match_parent"       <!-- 高度填满屏幕 -->
+    android:orientation="vertical"             <!-- 子控件垂直排列 -->
+    tools:context=".SecondActivity">           <!-- 指定绑定的 Activity -->
 
+    <!-- 返回主页面 -->
     <Button
         android:id="@+id/second_layout_button_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/second_layout_button_1" />
+
+    <!-- 跳转到第三页面（若有） -->
     <Button
         android:id="@+id/second_layout_button_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/second_layout_button_2" />
+
+    <!-- 创建数据库按钮 -->
     <Button
         android:id="@+id/create_database"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/create_database" />
-  
+
+    <!-- 以下是图书信息录入区域 -->
+    
+    <!-- 输入书名 -->
     <EditText
         android:id="@+id/edit_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="书名" />
+
+    <!-- 输入作者 -->
     <EditText
         android:id="@+id/edit_author"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="作者" />
+
+    <!-- 输入价格（小数） -->
     <EditText
         android:id="@+id/edit_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="价格"
         android:inputType="numberDecimal" />
+
+    <!-- 输入页数（整数） -->
     <EditText
         android:id="@+id/edit_pages"
         android:layout_width="match_parent"
@@ -189,32 +210,41 @@
         android:hint="页数"
         android:inputType="number" />
 
+    <!-- 图书操作按钮区域 -->
 
+    <!-- 添加图书记录 -->
     <Button
         android:id="@+id/btn_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="添加图书" />
+
+    <!-- 修改图书记录 -->
     <Button
         android:id="@+id/btn_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="更改图书内容" />
+
+    <!-- 删除图书记录 -->
     <Button
         android:id="@+id/btn_delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="删除图书" />
+
+    <!-- 查询所有图书记录 -->
     <Button
         android:id="@+id/btn_query_all"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="查询所有图书" />
+
+    <!-- 图书列表展示 -->
     <ListView
         android:id="@+id/book_list_view"
         android:layout_width="match_parent"
         android:layout_height="300dp" />
-
 </LinearLayout>
 ```
 
@@ -300,40 +330,32 @@ import ...
 public class FirstActivity extends AppCompatActivity {
     private ImageView imageView;
 
-    private int imageIndex = 0; // imageIndex变量记录当前图片索引
-    private int[] images = {R.drawable.img1, R.drawable.img2, R.drawable.img3}; // 图片资源数组
+    private int imageIndex = 0; // imageIndex变量：记录当前图片索引
+    private int[] images = {R.drawable.img1, R.drawable.img2, R.drawable.img3}; //  images：图片资源数组
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //  setContentView 是 Activity 类中的一个重要方法 ，它的作用是为当前 Activity 设置要显示的用户界面布局。
-        //  R 是一个自动生成的资源类，它包含了项目中所有资源（如布局、字符串、图片等）的标识符。
-        //  layout 是资源目录名，用于存放布局文件。
-        //  first_layout 是具体的布局文件名，这个布局文件定义了界面的视图结构和外观。
-        setContentView(R.layout.first_layout);
+        setContentView(R.layout.first_layout);	// 设置当前界面使用的布局文件
 
 
-        //  通过布局文件中的 ID 找到对应的 ImageView 控件，并赋值给变量 imageView，以便后续操作它
-        imageView = (ImageView) findViewById(R.id.image_view);
+        // 初始化图片控件
+        imageView = findViewById(R.id.image_view);
 
+        // 初始化所有按钮和文本框控件
+        Button button1 = findViewById(R.id.first_layout_button_1); // 显式跳转页面二
+        Button button2 = findViewById(R.id.first_layout_button_2); // 隐式跳转页面二
+        Button button3 = findViewById(R.id.first_layout_button_3); // 打开百度网页
+        Button button4 = findViewById(R.id.first_layout_button_4); // 拨打电话
+        Button button5 = findViewById(R.id.first_layout_button_5); // 切换图片
+        Button button6 = findViewById(R.id.first_layout_button_6); // 隐式跳转页面三
+        Button button7 = findViewById(R.id.show_input_button);     // 显示输入框内容
+        Button button8 = findViewById(R.id.dialog_button);         // 弹出对话框
+      
+        EditText editText = findViewById(R.id.edit_text);          // 用户输入框
 
-        //按钮部分
-        // 1️⃣通过 findViewById 方法找到布局中 id 为 first_layout_button_n 的按钮，并将其强制转换为 Button 类型
-        Button button1 = findViewById(R.id.first_layout_button_1);
-        Button button2 = findViewById(R.id.first_layout_button_2);
-        Button button3 = findViewById(R.id.first_layout_button_3);
-        Button button4 = findViewById(R.id.first_layout_button_4);
-        Button button5 = findViewById(R.id.first_layout_button_5);
-        Button button6 = findViewById(R.id.first_layout_button_6);
-        Button button7 = findViewById(R.id.show_input_button);
-        Button button8 = findViewById(R.id.dialog_button);
-
-
-        EditText editText = findViewById(R.id.edit_text);
-
-        // 2️⃣为按钮设置点击事件监听器
-        //按钮1：显式Intent跳转到了页面2
+        // 为按钮设置点击事件监听器
+        //按钮1：显式跳转到 SecondActivity
         button1.setOnClickListener(new View.OnClickListener() {
             // 重写 onClick 方法，当按钮被点击时会调用此方法
             @Override
@@ -341,14 +363,13 @@ public class FirstActivity extends AppCompatActivity {
                 //  使用 Toast 类创建一个短暂显示的消息提示，Toast.LENGTH_SHORT 的显示时长约为 2 秒。
                 Toast.makeText(FirstActivity.this, "你使用显式Intent跳转到了页面2", Toast.LENGTH_SHORT).show();
 
-                //  跳转（二选一）显式Intent和隐式Intent
                 //使用显式Intent实现跳转
                 Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
                 startActivity(intent);
             }
         });
 
-        //按钮2：使用隐式Intent跳转到了页面2
+        //按钮2：隐式跳转到 SecondActivity
         button2.setOnClickListener(new View.OnClickListener() {
             // 重写 onClick 方法，当按钮被点击时会调用此方法
             @Override
@@ -393,7 +414,7 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        //按钮5：切换图片
+        //按钮5：切换图片，每点击一次切换一张图
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -403,7 +424,7 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        //按钮6：隐式跳转到了页面3
+        //按钮6：隐式跳转到 ThirdActivity
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -416,7 +437,7 @@ public class FirstActivity extends AppCompatActivity {
         });
 
 
-        //按钮7：读取文本框
+        //按钮7：读取输入框内容并显示在 Toast 中
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -426,7 +447,7 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        //按钮8：弹窗
+        //按钮8：显示弹出对话框
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -438,6 +459,7 @@ public class FirstActivity extends AppCompatActivity {
                 dialog.setPositiveButton("让我过！", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                      // 点击确认后什么也不做
                     }
                 });
                 dialog.show();
@@ -461,7 +483,6 @@ public class FirstActivity extends AppCompatActivity {
         }
         return true;
     }
-
 }
 ```
 
@@ -477,12 +498,12 @@ import ....
 public class SecondActivity extends AppCompatActivity {
 
     //初始化数据库
-    private MyDatabaseHelper dbHelper;
-    private ArrayAdapter<String> adapter;
-    private List<String> bookList = new ArrayList<>();
-    private String originalBookName = null;
+    private MyDatabaseHelper dbHelper;// 数据库辅助类，用于数据库操作
+    private ArrayAdapter<String> adapter;// ListView 的适配器，用于展示简洁文本信息
+    private List<String> bookList = new ArrayList<>();// 字符串列表，用于展示图书内容摘要
+    private String originalBookName = null;// 记录当前选中的原始书名，用于更新操作时定位数据
 
-    // 辅助类：存储完整信息
+    // 定义一个图书类，用于封装图书完整信息
     static class Book {
         String name;
         String author;
@@ -503,7 +524,7 @@ public class SecondActivity extends AppCompatActivity {
         }
     }
 
-    // 新的数据列表：与 bookList 一一对应
+    // 储存完整图书信息的列表：与 bookList 一一对应
     private List<Book> bookDataList = new ArrayList<>();
 
 
@@ -527,7 +548,7 @@ public class SecondActivity extends AppCompatActivity {
         EditText priceEdit = findViewById(R.id.edit_price);
         EditText pagesEdit = findViewById(R.id.edit_pages);
 
-        //listview部分
+        //设置listview与适配器，并绑定点击事件用于选中图书进行更新
         ListView listView = findViewById(R.id.book_list_view);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, bookList);
         listView.setAdapter(adapter);
@@ -546,8 +567,7 @@ public class SecondActivity extends AppCompatActivity {
             Toast.makeText(SecondActivity.this, "已选中《" + selectedBook.name + "》", Toast.LENGTH_SHORT).show();
         });
 
-
-        //按钮1
+        //跳转回页面一
         button1.setOnClickListener(new View.OnClickListener() {
             // 重写 onClick 方法，当按钮被点击时会调用此方法
             @Override
@@ -562,21 +582,20 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
-        //按钮4
+        //跳转到页面三
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //显示跳转页面2 to 页面3
                 //  使用 Toast 类创建一个短暂显示的消息提示，Toast.LENGTH_SHORT 的显示时长约为 2 秒。
                 Toast.makeText(SecondActivity.this, "你使用显式Intent跳转到了页面3", Toast.LENGTH_SHORT).show();
-                //  跳转（二选一）显式Intent和隐式Intent
                 //使用显式Intent实现跳转
                 Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
                 startActivity(intent);
             }
         });
 
-        //按钮5 数据库
+        //数据库
         //数据库名为BookStore，版本为1,可以通过升级版本来更新数据库
         dbHelper = new MyDatabaseHelper(this, "BookStore.db", null, 4);
         button3.setOnClickListener(new View.OnClickListener() {
@@ -593,13 +612,10 @@ public class SecondActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(SecondActivity.this, "数据库未成功创建", Toast.LENGTH_SHORT).show();
                 }
-
-
             }
         });
-
-
-        // 添加
+      
+        // 添加图书
         btnAdd.setOnClickListener(v -> {
             String name = nameEdit.getText().toString();
             String author = authorEdit.getText().toString();
@@ -625,7 +641,7 @@ public class SecondActivity extends AppCompatActivity {
             db.close();
         });
 
-        // 更新（通过书名修改价格）
+        // 修改图书信息（通过原书名定位）
         btnUpdate.setOnClickListener(v -> {
             String name = nameEdit.getText().toString();
             String author = authorEdit.getText().toString();
@@ -663,7 +679,7 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
-        // 删除
+        // 删除图书
         btnDelete.setOnClickListener(v -> {
             String name = nameEdit.getText().toString();
             if (name.isEmpty()) {
@@ -677,8 +693,7 @@ public class SecondActivity extends AppCompatActivity {
             db.close();
         });
 
-        // 查询
-
+        // 查询所有图书
         btnQueryAll.setOnClickListener(v -> {
             bookList.clear();        // 给 ListView 显示的文本
             bookDataList.clear();    // 实际存储完整信息
@@ -723,37 +738,36 @@ public class ThirdActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.third_layout);
+        setContentView(R.layout.third_layout); // 设置布局文件
 
-        // 初始化按钮
-        Button button1 = findViewById(R.id.third_layout_button1);
-        Button button2 = findViewById(R.id.third_layout_button2);
+        // 初始化两个跳转按钮
+        Button button1 = findViewById(R.id.third_layout_button1); // 跳转到页面1
+        Button button2 = findViewById(R.id.third_layout_button2); // 跳转到页面2
 
-        // 按钮1：跳转到页面1
+        // 按钮1：显式 Intent 跳转回 FirstActivity（页面1）
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(ThirdActivity.this, "你使用显式Intent跳转回到了页面1", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(ThirdActivity.this, FirstActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // 清除回退栈中页面1之上的页面
                 startActivity(intent);
             }
         });
 
-        // 按钮2：跳转到页面2
+        // 按钮2：显式 Intent 跳转到 SecondActivity（页面2）
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(ThirdActivity.this, "你使用显式Intent跳转到了页面2", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent("com.example.activity.SECOND_ACTION");
                 intent.addCategory("android.intent.category.DEFAULT");
-                // 限定只在本 app 内查找
-                intent.setPackage(getPackageName());
+                intent.setPackage(getPackageName()); // 限定仅在当前 app 内查找匹配的 activity
                 startActivity(intent);
             }
         });
 
-        // ListView 显示数据
+        // 准备 ListView 中的数据（乐器列表）
         List<Instruments> instrumentList = new ArrayList<>();
         instrumentList.add(new Instruments("Guitar", R.drawable.guitar));
         instrumentList.add(new Instruments("Bass", R.drawable.bass));
@@ -761,12 +775,13 @@ public class ThirdActivity extends AppCompatActivity {
         instrumentList.add(new Instruments("Piano_Keys", R.drawable.piano_keys));
         instrumentList.add(new Instruments("Microphone", R.drawable.microphone));
 
+     		// 创建自定义适配器，将数据绑定到 ListView 上
         InstrumentsAdapter adapter = new InstrumentsAdapter(ThirdActivity.this,
                 R.layout.instruments_item, instrumentList);
         ListView listView = findViewById(R.id.list_view);
         listView.setAdapter(adapter);
 
-        //listview的点击事件  setOnItemClickListener
+        //listview的点击事件：点击某项后弹出对应名称的 Toast
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -837,7 +852,7 @@ public class ThirdActivity extends AppCompatActivity {
 
 ```java
 package com.example.activity;
-
+//Instruments 类用于封装乐器对象，包含乐器的名称和图片资源 ID。
 public class Instruments {
     private String name;
     private int imageId;
@@ -861,41 +876,53 @@ package com.example.activity;
 
 import ....
 
+  //InstrumentsAdapter 是自定义适配器，用于将 Instruments 对象绑定到 ListView 的每个条目中。
+  //使用 ViewHolder 模式提高性能。
 public class InstrumentsAdapter extends ArrayAdapter<Instruments> {
-    private int resourceId;
-
+    private int resourceId; // 每个列表项使用的布局资源 ID
+  
+ /*  	构造方法
+      @param context 上下文对象
+      @param textViewResourceId 列表项布局资源 ID
+      @param objects 乐器对象列表				*/
     public InstrumentsAdapter(Context context, int textViewResourceId, List<Instruments> objects) {
         super(context, textViewResourceId, objects);
         resourceId = textViewResourceId;
     }
 
+  // 重写 getView 方法，为 ListView 的每一项加载布局并绑定数据
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        Instruments instruments = getItem(position); // 获取当前项的实例
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+        // 获取当前项的乐器对象
+        Instruments instruments = getItem(position);
 
         View view;
         ViewHolder viewHolder;
 
+        // 判断是否可复用已有的视图（提高性能）
         if (convertView == null) {
+            // 若不可复用，则手动加载新的布局，并创建 ViewHolder 来缓存子控件引用
             view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.instrumentImage = view.findViewById(R.id.instrument_image);
             viewHolder.instrumentName = view.findViewById(R.id.instrument_name);
-            view.setTag(viewHolder); // 缓存 viewHolder 对象
+            view.setTag(viewHolder); // 将 viewHolder 缓存到 view 中
         } else {
+            // 若已有可复用的视图，则直接读取缓存的 ViewHolder
             view = convertView;
             viewHolder = (ViewHolder) view.getTag();
         }
 
+        // 将乐器对象的数据设置到对应控件上
         if (instruments != null) {
             viewHolder.instrumentImage.setImageResource(instruments.getImageId());
             viewHolder.instrumentName.setText(instruments.getName());
         }
-
         return view;
     }
 
-    // 内部类用于优化性能（ViewHolder 模式）
+    // 静态内部类：用于缓存子控件，避免频繁 findViewById 调用，提高列表滚动性能
     static class ViewHolder {
         ImageView instrumentImage;
         TextView instrumentName;
@@ -911,9 +938,12 @@ public class InstrumentsAdapter extends ArrayAdapter<Instruments> {
 package com.example.activity;
 
 import ...
+//	MyDatabaseHelper 是一个用于创建和管理 SQLite 数据库的辅助类。
+//	包含两个数据表：Book 和 Category，支持数据库创建和版本升级。
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
-    //创建bookstore的数据库，在库中新建一个数据表Book【有id（主键，自增长）、作者、价格、页数、书名】integer整型，real浮点型，text文本类型
+    //SQL 语句：创建 Book 表【包含id（主键，自增长）、作者、价格、页数、书名】
+  	//integer整型，real浮点型，text文本类型
     public static final String CREATE_BOOK = "create table Book("
             + "id integer primary key autoincrement,"
             + "author text,"
@@ -921,36 +951,45 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             + "pages integer,"
             + "name text)";
 
-    //创建bookstore的数据库，在库中新建一个数据表Category【有id（主键，自增长）、category_name文本类型，用来存储分类的名称、category_code整数类型，用来存储分类的编码
+    /// SQL 语句：创建 Category 表【包含id（主键，自增长）、category_name文本类型，用来存储分类的名称、category_code整数类型，用来存储分类的编码
     public static final String CREATE_CATEGORY = "create table Category("
             + "id integer primary key autoincrement,"
             + "category_name text,"
             + "category_code integer)";
 
-
+  	// 用于在创建数据库时显示 Toast 提示
     private Context mContext;
+  
+  /*
+      构造方法：初始化数据库帮助类
+      @param context 上下文对象
+      @param name 数据库名称
+      @param factory CursorFactory（通常为 null）
+      @param version 数据库版本号
+   */
 
-    //四个参数【Context、数据库名、返回自定义Cursor，默认为null、当前数据库版本号】
+    //四个参数【context、数据库名name、返回自定义Cursor，默认为null、当前数据库版本号】
     public MyDatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
         mContext = context;
     }
 
     //两个方法onCreate、onUpgrade自己需要重写
+  	//第一次创建数据库时调用onCreate方法，执行建表语句
     @Override
     public void onCreate(SQLiteDatabase db) {
         //调用SQLiteDatabase中的execSQL的方法执行建表语句，Toast弹窗来显示创建成功
-        db.execSQL(CREATE_BOOK);
-        db.execSQL(CREATE_CATEGORY);
+        db.execSQL(CREATE_BOOK);	// 创建 Book 表
+        db.execSQL(CREATE_CATEGORY);	// 创建 Category 表
         Toast.makeText(mContext, "数据库创建成功", Toast.LENGTH_SHORT).show();
     }
 
-    //数据库升级
+    //数据库升级：数据库版本升级时调用此方法，可根据需要修改表结构
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("drop table if exists Book");
-        db.execSQL("drop table if exists Category");
-        onCreate(db);
+        db.execSQL("drop table if exists Book");       // 删除旧的 Book 表
+        db.execSQL("drop table if exists Category");   // 删除旧的 Category 表
+        onCreate(db);                                   // 重新创建表结构
     }
 }
 ```
