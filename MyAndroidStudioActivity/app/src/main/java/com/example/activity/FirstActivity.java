@@ -125,7 +125,7 @@ public class FirstActivity extends AppCompatActivity {
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 使用隐式 Intent 跳转到 ThirdActivity
+                // 使用隐式 Intent 跳转到 ThirdlActivity
                 Toast.makeText(FirstActivity.this, "你使用隐式Intent跳转到了页面3", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent("com.example.activity.ACTION_START");
                 intent.addCategory("android.intent.category.DEFAULT");

@@ -25,32 +25,54 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-    
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".FirstActivity">
+
     <Button
         android:id="@+id/first_layout_button_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/first_layout_button_1" />
-
     <Button
         android:id="@+id/first_layout_button_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/first_layout_button_2" />
-
+    <Button
+        android:id="@+id/first_layout_button_6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="跳转到第三个页面（隐式）"/>
     <Button
         android:id="@+id/first_layout_button_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/first_layout_button_3"
         android:textAllCaps="false" />
-
     <Button
         android:id="@+id/first_layout_button_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/first_layout_button_4"
+        android:textAllCaps="false" />
+    <Button
+        android:id="@+id/dialog_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_button"/>
+
+    <EditText
+        android:id="@+id/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_text" />
+  
+    <Button
+        android:id="@+id/show_input_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/show_input_button"
         android:textAllCaps="false" />
     <Button
         android:id="@+id/first_layout_button_5"
@@ -64,7 +86,6 @@
         android:layout_height="wrap_content"
         android:src="@drawable/img1" />
 
-
 </LinearLayout>
 ```
 
@@ -77,8 +98,6 @@
 `android:layout_height="wrap_content"`：该属性表明按钮的高度会依据其内容（也就是按钮上显示的文本）自动调整。
 
 `android:text="@string/button_1"`：这里是引用了字符串资源 button_1，其作用是把这个字符串显示在按钮上。
-
-
 
 ##### res/values/strings.xml
 
@@ -100,6 +119,7 @@
     <string name="third_layout_button2">跳转到第二个页面（显式）</string>
     <string name="instrument_name">乐器名</string>
     <string name="create_database">创建数据库</string>
+    <string name="update_data">更新数据</string>
 </resources>
 ```
 
@@ -135,34 +155,65 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/second_layout_button_1" />
-
     <Button
         android:id="@+id/second_layout_button_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/second_layout_button_2" />
-
-    <EditText
-        android:id="@+id/edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/edit_text" />
-    <Button
-        android:id="@+id/show_input_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/show_input_button"
-        android:textAllCaps="false" />
-    <Button
-        android:id="@+id/dialog_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/dialog_button"/>
     <Button
         android:id="@+id/create_database"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/create_database" />
+  
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="书名" />
+    <EditText
+        android:id="@+id/edit_author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="作者" />
+    <EditText
+        android:id="@+id/edit_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="价格"
+        android:inputType="numberDecimal" />
+    <EditText
+        android:id="@+id/edit_pages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="页数"
+        android:inputType="number" />
+
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="添加图书" />
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="更改图书内容" />
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="删除图书" />
+    <Button
+        android:id="@+id/btn_query_all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="查询所有图书" />
+    <ListView
+        android:id="@+id/book_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
 
 </LinearLayout>
 ```
@@ -218,6 +269,11 @@
         android:src="@drawable/ic_launcher_foreground"
         android:scaleType="centerCrop" />
 
+<!--    图片旁边的文本内容
+    字离图片的距离 layout_marginStart
+    文本与图片居中 layout_gravity="center_vertical"
+
+-->
     <TextView
         android:id="@+id/instrument_name"
         android:layout_width="wrap_content"
@@ -230,26 +286,16 @@
 </LinearLayout>
 ```
 
-
-
 ## 后端部分
 
-### FirstActivity.java
+### 第一个页面
+
+#### FirstActivity.java
 
 ```java
 package com.example.activity;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
+import ...
 
 public class FirstActivity extends AppCompatActivity {
     private ImageView imageView;
@@ -280,9 +326,14 @@ public class FirstActivity extends AppCompatActivity {
         Button button4 = findViewById(R.id.first_layout_button_4);
         Button button5 = findViewById(R.id.first_layout_button_5);
         Button button6 = findViewById(R.id.first_layout_button_6);
+        Button button7 = findViewById(R.id.show_input_button);
+        Button button8 = findViewById(R.id.dialog_button);
+
+
+        EditText editText = findViewById(R.id.edit_text);
 
         // 2️⃣为按钮设置点击事件监听器
-        //按钮1
+        //按钮1：显式Intent跳转到了页面2
         button1.setOnClickListener(new View.OnClickListener() {
             // 重写 onClick 方法，当按钮被点击时会调用此方法
             @Override
@@ -297,7 +348,7 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        //按钮2
+        //按钮2：使用隐式Intent跳转到了页面2
         button2.setOnClickListener(new View.OnClickListener() {
             // 重写 onClick 方法，当按钮被点击时会调用此方法
             @Override
@@ -312,7 +363,7 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        //按钮3
+        //按钮3：打开百度
         button3.setOnClickListener(new View.OnClickListener() {
             // 重写 onClick 方法，当按钮被点击时会调用此方法
             @Override
@@ -327,7 +378,7 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        //按钮4
+        //按钮4：打电话
         button4.setOnClickListener(new View.OnClickListener() {
             // 重写 onClick 方法，当按钮被点击时会调用此方法
             @Override
@@ -342,26 +393,54 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        //按钮5
+        //按钮5：切换图片
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 imageIndex = (imageIndex + 1) % images.length; // 每次点击后索引 +1，超出就回到 0
                 imageView.setImageResource(images[imageIndex]); // 设置当前图片
-                Toast.makeText(FirstActivity.this, "你切换到了第" + (imageIndex + 1) + "张图片", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(FirstActivity.this, "你切换到了第" + (imageIndex + 1) + "张图片", Toast.LENGTH_SHORT).show();
             }
         });
 
-        //按钮6
-
+        //按钮6：隐式跳转到了页面3
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 使用隐式 Intent 跳转到 ThirdActivity
+                // 使用隐式 Intent 跳转到 ThirdlActivity
                 Toast.makeText(FirstActivity.this, "你使用隐式Intent跳转到了页面3", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent("com.example.activity.ACTION_START");
                 intent.addCategory("android.intent.category.DEFAULT");
                 startActivity(intent);
+            }
+        });
+
+
+        //按钮7：读取文本框
+        button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //收取文本框的内容
+                String inputText = editText.getText().toString();
+                Toast.makeText(FirstActivity.this, "你输入了: " + inputText, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //按钮8：弹窗
+        button8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //跳出弹窗
+                AlertDialog.Builder dialog = new AlertDialog.Builder(FirstActivity.this);
+                dialog.setTitle("有一个重要的信息");
+                dialog.setMessage("求求老师大作业给我过吧");
+                dialog.setCancelable(false);
+                dialog.setPositiveButton("让我过！", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                dialog.show();
             }
         });
 
@@ -386,28 +465,47 @@ public class FirstActivity extends AppCompatActivity {
 }
 ```
 
-### SecondActivity.java
+### 第二个页面
+
+#### SecondActivity.java
 
 ```java
 package com.example.activity;
 
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import java.io.File;
+import ....
 
 public class SecondActivity extends AppCompatActivity {
 
     //初始化数据库
     private MyDatabaseHelper dbHelper;
+    private ArrayAdapter<String> adapter;
+    private List<String> bookList = new ArrayList<>();
+    private String originalBookName = null;
+
+    // 辅助类：存储完整信息
+    static class Book {
+        String name;
+        String author;
+        double price;
+        int pages;
+
+        Book(String name, String author, double price, int pages) {
+            this.name = name;
+            this.author = author;
+            this.price = price;
+            this.pages = pages;
+        }
+
+        //重写Book的toString方法
+        @Override
+        public String toString() {
+            return "《" + name + "》\n作者: " + author + "\n价格: ¥" + price + "，页数: " + pages;
+        }
+    }
+
+    // 新的数据列表：与 bookList 一一对应
+    private List<Book> bookDataList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -416,12 +514,37 @@ public class SecondActivity extends AppCompatActivity {
 
         //按钮初始化
         Button button1 = findViewById(R.id.second_layout_button_1);
-        Button button2 = findViewById(R.id.show_input_button);
-        Button button3 = findViewById(R.id.dialog_button);
-        Button button4 = findViewById(R.id.second_layout_button_2);
-        Button button5 = findViewById(R.id.create_database);
+        Button button2 = findViewById(R.id.second_layout_button_2);
+        Button button3 = findViewById(R.id.create_database);
+
+        Button btnAdd = findViewById(R.id.btn_add);
+        Button btnUpdate = findViewById(R.id.btn_update);
+        Button btnDelete = findViewById(R.id.btn_delete);
+        Button btnQueryAll = findViewById(R.id.btn_query_all);
         //文本框初始化
-        EditText editText = findViewById(R.id.edit_text);
+        EditText nameEdit = findViewById(R.id.edit_name);
+        EditText authorEdit = findViewById(R.id.edit_author);
+        EditText priceEdit = findViewById(R.id.edit_price);
+        EditText pagesEdit = findViewById(R.id.edit_pages);
+
+        //listview部分
+        ListView listView = findViewById(R.id.book_list_view);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, bookList);
+        listView.setAdapter(adapter);
+        // 设置点击事件：点击 ListView 的一项自动填入 EditText
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            if (position >= bookDataList.size()) return;
+
+            Book selectedBook = bookDataList.get(position);
+            nameEdit.setText(selectedBook.name);
+            authorEdit.setText(selectedBook.author);
+            priceEdit.setText(String.valueOf(selectedBook.price));
+            pagesEdit.setText(String.valueOf(selectedBook.pages));
+
+            originalBookName = selectedBook.name; // 保存原始书名
+
+            Toast.makeText(SecondActivity.this, "已选中《" + selectedBook.name + "》", Toast.LENGTH_SHORT).show();
+        });
 
 
         //按钮1
@@ -439,37 +562,8 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
-        //按钮2
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //收取文本框的内容
-                String inputText = editText.getText().toString();
-                Toast.makeText(SecondActivity.this, "你输入了: " + inputText, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        //按钮3
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //跳出弹窗
-                AlertDialog.Builder dialog = new AlertDialog.Builder(SecondActivity.this);
-                dialog.setTitle("有一个重要的信息");
-                dialog.setMessage("求求老师大作业给我过吧");
-                dialog.setCancelable(false);
-                dialog.setPositiveButton("让我过！", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                dialog.show();
-            }
-        });
-
         //按钮4
-        button4.setOnClickListener(new View.OnClickListener() {
+        button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //显示跳转页面2 to 页面3
@@ -484,8 +578,8 @@ public class SecondActivity extends AppCompatActivity {
 
         //按钮5 数据库
         //数据库名为BookStore，版本为1,可以通过升级版本来更新数据库
-        dbHelper = new MyDatabaseHelper(this, "BookStore.db", null, 2);
-        button5.setOnClickListener(new View.OnClickListener() {
+        dbHelper = new MyDatabaseHelper(this, "BookStore.db", null, 4);
+        button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //按钮点击事件里调用getWritableDatabase()方法，当第一次点击会自动创建book表
@@ -499,30 +593,131 @@ public class SecondActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(SecondActivity.this, "数据库未成功创建", Toast.LENGTH_SHORT).show();
                 }
+
+
             }
+        });
+
+
+        // 添加
+        btnAdd.setOnClickListener(v -> {
+            String name = nameEdit.getText().toString();
+            String author = authorEdit.getText().toString();
+            String priceStr = priceEdit.getText().toString();
+            String pagesStr = pagesEdit.getText().toString();
+
+            if (name.isEmpty() || author.isEmpty() || priceStr.isEmpty() || pagesStr.isEmpty()) {
+                Toast.makeText(this, "请填写完整信息", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            double price = Double.parseDouble(priceStr);
+            int pages = Integer.parseInt(pagesStr);
+
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("name", name);
+            values.put("author", author);
+            values.put("price", price);
+            values.put("pages", pages);
+            db.insert("Book", null, values);
+            Toast.makeText(this, "添加成功", Toast.LENGTH_SHORT).show();
+            db.close();
+        });
+
+        // 更新（通过书名修改价格）
+        btnUpdate.setOnClickListener(v -> {
+            String name = nameEdit.getText().toString();
+            String author = authorEdit.getText().toString();
+            String priceStr = priceEdit.getText().toString();
+            String pagesStr = pagesEdit.getText().toString();
+
+            if (originalBookName == null) {
+                Toast.makeText(this, "请先点击一项图书进行编辑", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (name.isEmpty() || author.isEmpty() || priceStr.isEmpty() || pagesStr.isEmpty()) {
+                Toast.makeText(this, "请填写完整信息", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            double price = Double.parseDouble(priceStr);
+            int pages = Integer.parseInt(pagesStr);
+
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("name", name);
+            values.put("author", author);
+            values.put("price", price);
+            values.put("pages", pages);
+
+            int rows = db.update("Book", values, "name=?", new String[]{originalBookName});
+            db.close();
+
+            if (rows > 0) {
+                Toast.makeText(this, "图书信息更新成功", Toast.LENGTH_SHORT).show();
+                originalBookName = name; // 更新成功后同步更新“原始书名”
+            } else {
+                Toast.makeText(this, "未找到该书，更新失败", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // 删除
+        btnDelete.setOnClickListener(v -> {
+            String name = nameEdit.getText().toString();
+            if (name.isEmpty()) {
+                Toast.makeText(this, "请输入书名", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            int rows = db.delete("Book", "name=?", new String[]{name});
+            Toast.makeText(this, rows > 0 ? "删除成功" : "未找到该书", Toast.LENGTH_SHORT).show();
+            db.close();
+        });
+
+        // 查询
+
+        btnQueryAll.setOnClickListener(v -> {
+            bookList.clear();        // 给 ListView 显示的文本
+            bookDataList.clear();    // 实际存储完整信息
+
+            SQLiteDatabase db = dbHelper.getReadableDatabase();
+            Cursor cursor = db.query("Book", null, null, null, null, null, null);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                    String author = cursor.getString(cursor.getColumnIndexOrThrow("author"));
+                    double price = cursor.getDouble(cursor.getColumnIndexOrThrow("price"));
+                    int pages = cursor.getInt(cursor.getColumnIndexOrThrow("pages"));
+
+                    Book book = new Book(name, author, price, pages);
+                    bookDataList.add(book);
+                    bookList.add(book.toString()); // 显示在列表中的字符串
+                } while (cursor.moveToNext());
+            } else {
+                bookList.add("暂无图书记录");
+            }
+
+            cursor.close();
+            db.close();
+
+            adapter.notifyDataSetChanged();
         });
     }
 }
 ```
 
-### ThirdActivity.java
+### 第三个页面
+
+#### ThirdActivity.java
 
 ```java
 package com.example.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import ...
 public class ThirdActivity extends AppCompatActivity {
 
     @Override
@@ -636,7 +831,9 @@ public class ThirdActivity extends AppCompatActivity {
 </manifest>
 ```
 
-### Instruments.java
+### 乐器
+
+#### Instruments.java
 
 ```java
 package com.example.activity;
@@ -655,23 +852,14 @@ public class Instruments {
         return imageId;
     }
 }
-
 ```
 
-### InstrumentsAdapter.java
+#### InstrumentsAdapter.java
 
 ```java
 package com.example.activity;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import java.util.List;
+import ....
 
 public class InstrumentsAdapter extends ArrayAdapter<Instruments> {
     private int resourceId;
@@ -715,15 +903,14 @@ public class InstrumentsAdapter extends ArrayAdapter<Instruments> {
 }
 ```
 
-### MyDatabaseHelper.java
+### 数据库部分：
+
+#### MyDatabaseHelper.java
 
 ```java
 package com.example.activity;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
+import ...
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
     //创建bookstore的数据库，在库中新建一个数据表Book【有id（主键，自增长）、作者、价格、页数、书名】integer整型，real浮点型，text文本类型
@@ -734,6 +921,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             + "pages integer,"
             + "name text)";
 
+    //创建bookstore的数据库，在库中新建一个数据表Category【有id（主键，自增长）、category_name文本类型，用来存储分类的名称、category_code整数类型，用来存储分类的编码
     public static final String CREATE_CATEGORY = "create table Category("
             + "id integer primary key autoincrement,"
             + "category_name text,"
@@ -748,7 +936,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         mContext = context;
     }
 
-    //两个方法自己需要重写
+    //两个方法onCreate、onUpgrade自己需要重写
     @Override
     public void onCreate(SQLiteDatabase db) {
         //调用SQLiteDatabase中的execSQL的方法执行建表语句，Toast弹窗来显示创建成功
@@ -765,12 +953,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 }
-
 ```
-
-
-
-## 结果截图展示
 
 
 
