@@ -797,29 +797,32 @@ public class ThirdActivity extends AppCompatActivity {
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
+<!-- AndroidManifest 是整个应用的核心配置文件 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.activity">
 
+    <!-- 应用的整体属性配置 -->
     <application
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.Activity">
+        android:icon="@mipmap/ic_launcher"              <!-- 应用图标 -->
+        android:label="@string/app_name"                <!-- 应用名称 -->
+        android:roundIcon="@mipmap/ic_launcher_round"   <!-- 圆角图标（用于部分设备） -->
+        android:supportsRtl="true"                      <!-- 支持从右到左布局（如阿拉伯语） -->
+        android:theme="@style/Theme.Activity">          <!-- 应用主题 -->
 
-        <!-- 给页面中添加label -->
+        <!-- 页面一：FirstActivity，设置为应用的启动页 -->
         <activity
             android:name=".FirstActivity"
             android:exported="true"
-            android:label="@string/label学号姓名">
+            android:label="@string/label学号姓名">       <!-- 页面标题，会显示在应用顶部 -->
 
+            <!-- 配置启动入口（主入口 + 启动器图标） -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
+        <!-- 页面二：SecondActivity，支持通过隐式 Intent 调用 -->
         <activity
             android:name=".SecondActivity"
             android:exported="true"
@@ -831,6 +834,7 @@ public class ThirdActivity extends AppCompatActivity {
             </intent-filter>
         </activity>
 
+        <!-- 页面三：ThirdActivity，支持通过自定义 Action 调用 -->
         <activity
             android:name=".ThirdActivity"
             android:exported="true"
@@ -842,7 +846,6 @@ public class ThirdActivity extends AppCompatActivity {
         </activity>
 
     </application>
-
 </manifest>
 ```
 
@@ -930,7 +933,7 @@ public class InstrumentsAdapter extends ArrayAdapter<Instruments> {
 }
 ```
 
-### 数据库部分：
+### 数据库部分
 
 #### MyDatabaseHelper.java
 

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- AndroidManifest 整个应用的核心配置文件 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.activity">
 
+    <!-- 应用的整体属性配置 -->
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -9,23 +11,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Activity">
 
-        <!-- 给页面中添加label -->
+        <!-- 页面一：FirstActivity，设置为应用的启动页 -->
         <activity
             android:name=".FirstActivity"
             android:exported="true"
             android:label="@string/label学号姓名">
 
+            <!-- 配置启动入口（主入口 + 启动器图标） -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
+        <!-- 页面二：SecondActivity，支持通过隐式 Intent 调用 -->
         <activity
             android:name=".SecondActivity"
             android:exported="true"
             android:label="第二个页面">
+
             <intent-filter>
                 <action android:name="com.example.activity.ACTION_START"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -33,6 +37,7 @@
             </intent-filter>
         </activity>
 
+        <!-- 页面三：ThirdActivity，支持通过自定义 Action 调用 -->
         <activity
             android:name=".ThirdActivity"
             android:exported="true"
