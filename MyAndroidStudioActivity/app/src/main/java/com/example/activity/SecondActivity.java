@@ -164,6 +164,7 @@ public class SecondActivity extends AppCompatActivity {
             values.put("author", author);
             values.put("price", price);
             values.put("pages", pages);
+            //调用 SQLite 的 insert 操作，保存在数据库中
             db.insert("Book", null, values);
             Toast.makeText(this, "添加成功", Toast.LENGTH_SHORT).show();
             db.close();
@@ -247,6 +248,7 @@ public class SecondActivity extends AppCompatActivity {
             cursor.close();
             db.close();
 
+            //数据源变更后调用 notifyDataSetChanged() 刷新列表
             adapter.notifyDataSetChanged();
         });
     }
