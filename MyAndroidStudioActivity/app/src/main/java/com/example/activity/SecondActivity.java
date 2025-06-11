@@ -79,18 +79,25 @@ public class SecondActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.book_list_view);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, bookList);
         listView.setAdapter(adapter);
-        // 设置点击事件：点击 ListView 的一项自动填入 EditText
+
+        // 为 ListView 设置点击事件监听器
         listView.setOnItemClickListener((parent, view, position, id) -> {
+            // 若越界则直接返回（保护性判断）
             if (position >= bookDataList.size()) return;
 
+            // 获取被点击的图书对象
             Book selectedBook = bookDataList.get(position);
+
+            // 将图书信息填充到输入框中，方便后续修改或删除
             nameEdit.setText(selectedBook.name);
             authorEdit.setText(selectedBook.author);
             priceEdit.setText(String.valueOf(selectedBook.price));
             pagesEdit.setText(String.valueOf(selectedBook.pages));
 
-            originalBookName = selectedBook.name; // 保存原始书名
+            // 保存原始书名，用作更新图书时的定位依据
+            originalBookName = selectedBook.name;
 
+            // 弹出提示，显示已选中图书名称
             Toast.makeText(SecondActivity.this, "已选中《" + selectedBook.name + "》", Toast.LENGTH_SHORT).show();
         });
 
@@ -123,7 +130,7 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
-        //数据库
+        //数据库创建，更新
         //数据库名为BookStore，版本为1,可以通过升级版本来更新数据库
         dbHelper = new MyDatabaseHelper(this, "BookStore.db", null, 4);
         button3.setOnClickListener(new View.OnClickListener() {

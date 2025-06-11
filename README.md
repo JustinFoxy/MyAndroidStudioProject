@@ -16,9 +16,9 @@
 
 ## 项目介绍
 
-本次安卓课程的项目是一个基于 Java 的图书管理系统，主要实现了图书的增删改查功能。项目采用 Android 原生开发，使用 SQLite 数据库进行数据持久化存储，界面使用了 ListView 实现图书信息的展示。
+本次安卓课程的项目是一个**基于 Java 的图书管理系统，主要实现了图书的增删改查功能**。项目采用 Android 原生开发，使用 SQLite 数据库进行数据持久化存储，界面使用了 ListView 实现图书信息的展示。
 
-项目主要包括三个 Activity：主页面负责跳转，第二页面实现图书管理功能。图书信息通过自定义 Book 类表示，包括书名、作者、价格、页数字段。用户通过输入框添加图书，点击列表项可以进行编辑或删除。第三页面展示listview。
+项目主要包括**三个 Activity**：**主页面负责跳转和按钮的实际使用**，**第二页面实现图书管理功能**。图书信息通过自定义 Book 类表示，包括书名、作者、价格、页数字段。用户通过输入框添加图书，点击列表项可以进行编辑或删除。**第三页面展示listview的功能**。
 
 项目中使用了 SQLite 数据库，自定义 SQLiteOpenHelper 类来管理数据库创建和升级。数据表 Book 包含 id、书名、作者、价格、页数五个字段，id 为主键自增长。
 
@@ -32,6 +32,12 @@
 | 页面跳转       | Activity 是怎么跳转的？用了 Intent 吗？ | 使用 Intent 显式跳转，传递数据可用 putExtra()    |
 | 列表更新逻辑   | ListView 添加数据后怎么更新？           | 数据源变更后调用 notifyDataSetChanged() 刷新列表 |
 | 数据持久化机制 | 你如何实现添加数据后保存？              | 调用 SQLite 的 insert 操作，保存在数据库中       |
+
+## GitHub连接：
+
+https://github.com/JustinFoxy/MyAndroidStudioProject
+
+本次大作业我将代码和readme文档上传到了我的仓库，便于查看自己的进度和上传自己的作品。
 
 
 
@@ -119,11 +125,11 @@
 
 `android:id="@+id/btn1"`：为按钮设定一个唯一的标识符 btn1，借助这个 ID可以在 Java 代码里能够获取该按钮实例，进而对其进行操作。 
 
-`android:layout_width="match_parent"`：此属性规定按钮的宽度会和父容器的宽度保持一致。 
+`android:layout_width="match_parent"`：按钮的宽度会和父容器的宽度保持一致。 
 
-`android:layout_height="wrap_content"`：该属性表明按钮的高度会依据其内容（也就是按钮上显示的文本）自动调整。
+`android:layout_height="wrap_content"`：按钮的高度会依据其内容（也就是按钮上显示的文本）自动调整。
 
-`android:text="@string/button_1"`：这里是引用了字符串资源 button_1，其作用是把这个字符串显示在按钮上。
+`android:text="@string/button_1"`：引用了字符串资源 button_1，其作用是把这个字符串显示在按钮上。
 
 ##### res/values/strings.xml
 
@@ -577,6 +583,7 @@ public class SecondActivity extends AppCompatActivity {
         listView.setOnItemClickListener((parent, view, position, id) -> {
             if (position >= bookDataList.size()) return;
 
+            
             Book selectedBook = bookDataList.get(position);
             nameEdit.setText(selectedBook.name);
             authorEdit.setText(selectedBook.author);
